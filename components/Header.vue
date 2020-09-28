@@ -1,7 +1,7 @@
 <template>
     <v-toolbar >
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
-        <v-toolbar-title>Title</v-toolbar-title>
+        <v-toolbar-title>Recipippi</v-toolbar-title>
         <v-spacer />
         <v-btn icon>
             <v-icon>mdi-magnify</v-icon>

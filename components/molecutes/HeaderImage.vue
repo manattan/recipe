@@ -1,8 +1,6 @@
 <template>
-    <v-container >
-        <v-row justify="center">
-            <img src="~/assets/test.jpg" class="img"/>
-        </v-row>
+    <v-container class="box">
+        <img src="~/assets/chesecake.jpg" class="img"/>
     </v-container>
 </template>
 
@@ -16,7 +14,13 @@ export default Vue.extend({
 </script>
 
 <style>
+.box{
+    width:100%
+}
 .img{
-    text-align:center
+    width:100%;
+    max-height:500px;
+    text-align:center;
+    border-radius:10px
 }
 </style>
