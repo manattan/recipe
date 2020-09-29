@@ -2,14 +2,16 @@
     <v-container>
         <CuisineOverview :name="name" :summary="summary"/>
         <HeaderImage :src="src"/>
-        <div>
-            <div class="wrapper" md="8">
+        <v-container>
+            <v-row>
+            <v-col class="wrapper" cols="8">
                 <Recipe :ingredients="ingredients" :instructions="instructions"/>
-            </div>
-            <div class="wrapper" md="4">
+            </v-col>
+            <v-col class="wrapper" cols="4">
                 <TimeCard :time="timeInfo"/>
-            </div>
-        </div>
+            </v-col>
+            </v-row>
+        </v-container>
     </v-container>
 </template>
 
@@ -49,5 +51,8 @@ export default Vue.extend({
 <style>
 .wrapper{
     float: left;
+}
+.recipe{
+    width:
 }
 </style>
