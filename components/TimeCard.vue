@@ -1,5 +1,5 @@
 <template>
-    <div class="div">
+    <div class="box">
         ßko
     </div>
 </template>
@@ -15,8 +15,8 @@ export default Vue.extend({
 })
 </script>
 
-<style>
-.div{
-    background-color: black;
+<style scoped>
+.box{
+    border:solid 1px #111
 }
 </style>

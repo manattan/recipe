@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar >
+    <v-toolbar　class="elevation-0">
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
         <v-toolbar-title>Recipippi</v-toolbar-title>
         <v-spacer />

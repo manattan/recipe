@@ -35,7 +35,7 @@ export default Vue.extend({
             src: '~/assets/test.jpg',
             name:'Classic Chesecake',
             summary: 'Look no further for a creamy ultra smooth classic chesecake recipe! Paird with a buttery graham cracker crust, no one can deny its simple decadence. For the best fluits, bake in a water bath.',
-            ingredients:[{title:'Graham Cracker Crust',item:['ssssss','sssssssssss']},{title:'Chesecake',item:['ssssss','sssssssssss']}],
+            ingredients:[{title:'Graham Cracker Crust',item:['ssssss','abcdefghijklmnopqrstuvwxyijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz']},{title:'Chesecake',item:['ssssss','sssssssssss']}],
             instructions:['ssss','ssss','ssss','sssss','sss','ss','s','ss'],
             timeInfo:{
                 yields:'12',
@@ -48,11 +48,11 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped>
 .wrapper{
     float: left;
 }
-.recipe{
+/* .recipe{
     width:
-}
+} */
 </style>

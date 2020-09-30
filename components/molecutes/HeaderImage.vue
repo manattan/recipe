@@ -13,7 +13,7 @@ export default Vue.extend({
 
 </script>
 
-<style>
+<style scoped>
 .box{
     width:100%
 }

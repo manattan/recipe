@@ -1,17 +1,19 @@
 <template>
     <section>
-        <div v-for="(ingredient, i) in ingredients" :key="i">
-            <v-card>
-                <v-card-title>{{ingredient.title}}</v-card-title>
-                <v-card-text>{{ingredient.item}}</v-card-text>
-            </v-card>
-        </div>
+        <Ingredients :items="ingredients" />
+        <Instructions :items="instructions" />
     </section>
 </template>
 
 <script>
 import Vue from 'vue'
+import Ingredients from '~/components/Ingredients'
+
 export default Vue.extend({
+    components: {
+        Ingredients
+    },
+
     props:{
         ingredients:{
             type:Array,
@@ -24,3 +26,9 @@ export default Vue.extend({
     }
 })
 </script>
+
+<style scoped>
+section{
+    font-family: 'Times New Roman';
+}
+</style>
