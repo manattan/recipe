@@ -37,12 +37,9 @@ export default Vue.extend({
             summary: 'Look no further for a creamy ultra smooth classic chesecake recipe! Paird with a buttery graham cracker crust, no one can deny its simple decadence. For the best fluits, bake in a water bath.',
             ingredients:[{title:'Graham Cracker Crust',item:['ssssss','abcdefghijklmnopqrstuvwxyijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz']},{title:'Chesecake',item:['ssssss','sssssssssss']}],
             instructions:['ssss','ssss','ssss','sssss','sss','ss','s','ss'],
-            timeInfo:{
-                yields:'12 servings',
-                prepTime:'45 minutes',
-                cookTime:'1 hour',
-                totalTime:'7.75 hours'
-            }
+            timeInfo:[
+                '12 servings','45 minutes', '1 hour', '7.75 hours'
+            ]
         }
     }
 })
