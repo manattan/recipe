@@ -5,11 +5,13 @@
             <v-list class="list">
                 <v-list-item>
                     <v-list-item-icon>
-                        <v-icon>{{header.icon}}</v-icon>
+                        <v-icon v-if="i==0" color="orange">{{header.icon}}</v-icon>
+                        <v-icon v-else>{{header.icon}}</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content class="content">
                         <v-list-item-subtitle class="subtitle">{{header.name}}</v-list-item-subtitle>
-                        <v-list-item-title>{{time[i]}}</v-list-item-title>
+                        <v-list-item-title v-if="i==0" class="ti">{{time[i]}}</v-list-item-title>
+                        <v-list-item-title v-else>{{time[i]}}</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
@@ -70,5 +72,8 @@ export default Vue.extend({
 }
 .subtitle{
     font-size:70%
+}
+.ti{
+    color: orange;
 }
 </style>
