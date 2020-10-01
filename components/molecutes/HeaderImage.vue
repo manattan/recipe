@@ -19,6 +19,7 @@ export default Vue.extend({
 }
 .img{
     width:100%;
+    max-width:1000px;
     max-height:500px;
     text-align:center;
     border-radius:10px

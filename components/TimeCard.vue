@@ -61,6 +61,8 @@ export default Vue.extend({
 }
 .card{
     border-radius:15px;
+    max-width:200px;
+    float:center
 }
 .list{
     /* border:1px solid #111; */
