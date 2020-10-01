@@ -9,15 +9,38 @@
         <v-btn icon>
             <v-icon>mdi-heart</v-icon>
         </v-btn>
-        <button elevation="0">
-            <v-toolbar-title>Hello, manattan.</v-toolbar-title>
+        <button elevation="0" @click="login">
+            <v-toolbar-title>ログイン</v-toolbar-title>
         </button>
     </v-toolbar>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
+
+type User = {
+    userUid: string,
+    userName: string
+}
+
 export default Vue.extend({
-    name:'Header'
+    name:'Header',
+
+    data () {
+       return {
+           user: {} as User
+       }
+    },
+
+    async created () {
+        this.user = await this.$store.getters.getUser
+    },
+
+    methods:{
+        login () {
+            console.log('Login')
+            this.$store.dispatch('login')
+        }
+    }
 })
 </script>
