@@ -38,10 +38,10 @@ export default Vue.extend({
             ingredients:[{title:'Graham Cracker Crust',item:['ssssss','abcdefghijklmnopqrstuvwxyijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz']},{title:'Chesecake',item:['ssssss','sssssssssss']}],
             instructions:['ssss','ssss','ssss','sssss','sss','ss','s','ss'],
             timeInfo:{
-                yields:'12',
-                prepTime:'45',
-                cookTime:'60',
-                totalTime:'630'
+                yields:'12 servings',
+                prepTime:'45 minutes',
+                cookTime:'1 hour',
+                totalTime:'7.75 hours'
             }
         }
     }
