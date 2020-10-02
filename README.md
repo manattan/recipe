@@ -1,5 +1,8 @@
 # recipe
 cookpadのUI強化版を作成する（10月末までにMVP完成）
+UIは
+https://devchallenges.io/challenges/OEKdUZ6xs0h99C38XVht
+をメインに実装
 
 # 仕様
 - Nuxt.jsを用いている
