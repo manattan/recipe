@@ -9,6 +9,7 @@
         <v-btn icon>
             <v-icon>mdi-heart</v-icon>
         </v-btn>
+        <v-toobar-subtitle class="toCreate" @click="toCreate">レシピを追加</v-toobar-subtitle>
         <v-toolbar-title v-if="this.$store.state.user.userUid">Hello, {{user.userName}}</v-toolbar-title>
         <button v-else elevation="0" @click="login">
             <v-toolbar-title>ログイン</v-toolbar-title>
@@ -40,7 +41,17 @@ export default Vue.extend({
             const user = await this.$store.dispatch('login')
             this.user = user
             await addUserData(user)
+        },
+
+        toCreate () {
+            this.$router.push('/create')
         }
     }
 })
 </script>
+
+<style>
+.toCreate{
+    margin-right:10px
+}
+</style>
