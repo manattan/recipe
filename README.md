@@ -1,20 +1,8 @@
 # recipe
+cookpadのUI強化版を作成する（10月末までにMVP完成）
 
-## Build Setup
-
-```bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+# 仕様
+- Nuxt.jsを用いている
+- firestore, cloud storage, firebaseauthenticationを用いる
+- MVP: 認証機能、レシピを追加・削除する機能
+- マイページ機能。レシピ検索機能
