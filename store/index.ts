@@ -34,6 +34,10 @@ export const actions: ActionTree<RootState, RootState> = {
             console.log('success : ' + user.uid + ' : ' + user.displayName)
             commit('setUserUid', user.uid)
             commit('setUserName', user.displayName)
+            return {
+              userUid: user.uid,
+              userName: user.displayName
+            }
           }
       } catch (err) {
           var errCode = err.code

@@ -9,7 +9,8 @@
         <v-btn icon>
             <v-icon>mdi-heart</v-icon>
         </v-btn>
-        <button elevation="0" @click="login">
+        <v-toolbar-title v-if="this.$store.state.user.userUid">Hello, {{user.userName}}</v-toolbar-title>
+        <button v-else elevation="0" @click="login">
             <v-toolbar-title>ログイン</v-toolbar-title>
         </button>
     </v-toolbar>
@@ -17,18 +18,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
-
-type User = {
-    userUid: string,
-    userName: string
-}
+import { addUserData } from '~/utils/firestore'
+import * as commonTypes from '~/types/common'
 
 export default Vue.extend({
     name:'Header',
 
     data () {
        return {
-           user: {} as User
+           user: {} as commonTypes.User
        }
     },
 
@@ -37,9 +35,11 @@ export default Vue.extend({
     },
 
     methods:{
-        login () {
+        async login () {
             console.log('Login')
-            this.$store.dispatch('login')
+            const user = await this.$store.dispatch('login')
+            this.user = user
+            await addUserData(user)
         }
     }
 })
