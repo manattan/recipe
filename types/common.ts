@@ -7,3 +7,16 @@ export type User = {
     userUid: string,
     userName: string
 }
+
+export type Ingredients = {
+    title: string,
+    item: string[]
+}
+
+export type recipe = {
+    name: string,
+    summary: string,
+    ingredients:Ingredients[],
+    instructions: string[],
+    timeInfo: string[]
+}

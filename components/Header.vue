@@ -9,7 +9,7 @@
         <v-btn icon>
             <v-icon>mdi-heart</v-icon>
         </v-btn>
-        <v-toobar-subtitle class="toCreate" @click="toCreate">レシピを追加</v-toobar-subtitle>
+        <v-toobar-subtitle v-if="url!='/create'" class="toCreate" @click="toCreate">レシピを追加</v-toobar-subtitle>
         <v-toolbar-title v-if="this.$store.state.user.userUid">Hello, {{user.userName}}</v-toolbar-title>
         <button v-else elevation="0" @click="login">
             <v-toolbar-title>ログイン</v-toolbar-title>
@@ -27,12 +27,18 @@ export default Vue.extend({
 
     data () {
        return {
+           url: '',
            user: {} as commonTypes.User
        }
     },
 
     async created () {
         this.user = await this.$store.getters.getUser
+    },
+
+    mounted () {
+        this.url = this.$route.path
+        console.log(this.url)
     },
 
     methods:{
