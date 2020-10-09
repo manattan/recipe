@@ -124,7 +124,9 @@ export default Vue.extend({
                         const obse:any = this.$refs.observer
                         const isValid = await obse.validate()
                         if(isValid){
-                            this.confirm()
+                            this.save()
+                        } else {
+                            alert('空欄がありますね')
                         }
                         break
                 }
@@ -133,6 +135,10 @@ export default Vue.extend({
 
         clickBackButton () {
             this.goBack()
+        },
+
+        save (){
+
         },
 
         confirm(){

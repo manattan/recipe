@@ -4,15 +4,21 @@ import * as commonTypes from '~/types/common'
 
 const db = firebase.firestore()
 
+const common: commonTypes.CommonDocumentData = {
+    addTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    updateTimestamp: firebase.firestore.FieldValue.serverTimestamp()
+}
+
 export const addUserData = (user: commonTypes.User)  => {
     console.log("firestoreにuserを格納しようとしています")
-    const common: commonTypes.CommonDocumentData = {
-        addTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        updateTimestamp: firebase.firestore.FieldValue.serverTimestamp()
-      }
     console.log(user)
     const ref = db.collection('User').doc(user.userUid)
     ref.set(Object.assign(user,common)).then(()=>{
         console.log("firestoreにuserdataを格納しました")
     })
+}
+
+export const addRecipeData = (user: commonTypes.User, recipe: commonTypes.recipe) => {
+    console.log("firestoreにrecipeを格納しようとしています")
+    const ref= db.collection('Recipes')
 }
