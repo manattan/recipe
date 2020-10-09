@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <ValidationObserver>
+        <ValidationObserver ref="observer" v-slot="{ inValid }">
             <form>
                 <v-stepper v-model="currentStep">
                     <v-stepper-header>
@@ -45,10 +45,10 @@
                             <text-input-with-validate v-model="recipe.timeInfo[3]" label="総時間" rules="required"/>
                             </v-stepper-content>
                         <v-stepper-content step="5">
-                            <Confirm :name="name" :summary="summary" :ingredients="ingredients" :instructions="instructions" :timeInfo="timeInfo"/>
+                            <Confirm :recipe="recipe"/>
                         </v-stepper-content>
                     </v-stepper-items>
-                    <stepper-controller :current-step="currentStep" class="mt-16" @clickForwardButton="clickForwardButton" @clickBackButton="clickBackButton" />
+                    <stepper-controller :current-step="currentStep" class="mt-16" @clickForwardButton="clickForwardButton" @clickBackButton="clickBackButton" :disabled="inValid"/>
                 </v-stepper>
             </form>
         </ValidationObserver>
