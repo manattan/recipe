@@ -53,7 +53,7 @@
                 </v-stepper>
             </form>
         </ValidationObserver>
-        <ConfirmDialog  @toHome="toHome" @toMypage="toMypage"/>
+        <ConfirmDialog :dialog="dialog" @toHome="toHome" @toMypage="toMypage"/>
         </main>
     </v-container>
 </template>
