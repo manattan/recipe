@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar　class="elevation-0">
+    <v-toolbar　class="elevation-0 head"> 
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
         <v-toolbar-title>Recipippi</v-toolbar-title>
         <v-spacer />
@@ -59,5 +59,9 @@ export default Vue.extend({
 <style>
 .toCreate{
     margin-right:10px
+}
+
+.head{
+    max-height:56px
 }
 </style>
