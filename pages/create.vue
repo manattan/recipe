@@ -46,7 +46,7 @@
                             <text-input-with-validate v-model="recipe.timeInfo[3]" label="総時間" rules="required"/>
                             </v-stepper-content>
                         <v-stepper-content step="5">
-                            <Confirm :recipe="recipe"/>
+                            <Confirm :recipe="recipe" @toHome="toHome" @toMypage="toMypage"/>
                         </v-stepper-content>
                     </v-stepper-items>
                     <stepper-controller :current-step="currentStep" class="mt-16" @clickForwardButton="clickForwardButton" @clickBackButton="clickBackButton" :disabled="inValid"/>
@@ -81,6 +81,7 @@ export default Vue.extend({
 
     data () {
         return {
+            dialog: false,
             currentStep: 1,
             isLoading: false,
             recipe: {
@@ -138,11 +139,20 @@ export default Vue.extend({
         },
 
         save (){
-
+            console.log("saveしようとしています")
+            // firebaseの処理
+            console.log("saveされた")
+            this.dialog  = true
         },
 
-        confirm(){
-            return null
+        toHome(){
+            this.dialog = false
+            this.$router.push('/')
+        },
+
+        toMypage() {
+            this.dialog = false
+            this.$router.push('/mypage')
         }
     }
 })
