@@ -46,13 +46,14 @@
                             <text-input-with-validate v-model="recipe.timeInfo[3]" label="総時間" rules="required"/>
                             </v-stepper-content>
                         <v-stepper-content step="5">
-                            <Confirm :recipe="recipe" @toHome="toHome" @toMypage="toMypage"/>
+                            <Confirm :recipe="recipe"/>
                         </v-stepper-content>
                     </v-stepper-items>
                     <stepper-controller :current-step="currentStep" class="mt-16" @clickForwardButton="clickForwardButton" @clickBackButton="clickBackButton" :disabled="inValid"/>
                 </v-stepper>
             </form>
         </ValidationObserver>
+        <ConfirmDialog  @toHome="toHome" @toMypage="toMypage"/>
         </main>
     </v-container>
 </template>
@@ -62,7 +63,8 @@ import Vue from 'vue'
 import { extend, ValidationObserver } from 'vee-validate'
 import { is, required } from 'vee-validate/dist/rules'
 import TextInputWithValidate from '~/components/TextInputWithValidate.vue'
-import Confirm from '~/components/Confirm.vue' 
+import Confirm from '~/components/Confirm.vue'
+import ConfirmDialog from '~/components/ConfirmDialog.vue'
 import * as commonTypes from '~/types/common'
 
 extend('required', {
