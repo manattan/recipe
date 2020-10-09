@@ -45,7 +45,7 @@
                             <text-input-with-validate v-model="recipe.timeInfo[3]" label="総時間" rules="required"/>
                             </v-stepper-content>
                         <v-stepper-content step="5">
-                            
+                            <Confirm :name="name" :summary="summary" :ingredients="ingredients" :instructions="instructions" :timeInfo="timeInfo"/>
                         </v-stepper-content>
                     </v-stepper-items>
                     <stepper-controller :current-step="currentStep" class="mt-16" @clickForwardButton="clickForwardButton" @clickBackButton="clickBackButton" />
@@ -60,6 +60,7 @@ import Vue from 'vue'
 import { extend, ValidationObserver } from 'vee-validate'
 import { is, required } from 'vee-validate/dist/rules'
 import TextInputWithValidate from '~/components/TextInputWithValidate.vue'
+import Confirm from '~/components/Confirm.vue' 
 import * as commonTypes from '~/types/common'
 
 extend('required', {
@@ -72,7 +73,8 @@ export default Vue.extend({
 
     components: {
         ValidationObserver,
-        TextInputWithValidate
+        TextInputWithValidate,
+        Confirm
     },
 
     data () {
@@ -98,10 +100,9 @@ export default Vue.extend({
         },
         async clickForwardButton () {
             console.log("clickButton")
-                // 連打防止
-                if (this.isLoading) {
-                    return
-                }
+            if (this.isLoading) {
+                return
+            }
                 this.isLoading = true
     
                 switch (this.currentStep) {
