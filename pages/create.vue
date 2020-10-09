@@ -1,5 +1,6 @@
 <template>
     <v-container>
+        <main>
         <ValidationObserver ref="observer" v-slot="{ inValid }">
             <form>
                 <v-stepper v-model="currentStep">
@@ -29,7 +30,7 @@
                             <div v-for="(ingredient,i) in recipe.ingredients" :key="i">
                                 <text-input-with-validate v-model="ingredient.title" label="材料タイトル" rules="required"/>
                                 <div v-for="(item, j) in ingredient.item" :key="j">
-                                    <text-input-with-validate v-model="recipe.summary" label="材料" rules="required"/>
+                                    <text-input-with-validate v-model="ingredient.item[j]" label="材料" rules="required"/>
                                 </div>
                             </div>
                         </v-stepper-content>
@@ -52,6 +53,7 @@
                 </v-stepper>
             </form>
         </ValidationObserver>
+        </main>
     </v-container>
 </template>
 
@@ -99,7 +101,7 @@ export default Vue.extend({
             this.currentStep -=1
         },
         async clickForwardButton () {
-            console.log("clickButton")
+            console.log(this.recipe)
             if (this.isLoading) {
                 return
             }
