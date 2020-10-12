@@ -61,13 +61,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import 'firebase/storage'
 import { extend, ValidationObserver } from 'vee-validate'
 import { is, required } from 'vee-validate/dist/rules'
 import TextInputWithValidate from '~/components/TextInputWithValidate.vue'
 // import Confirm from '~/components/Confirm.vue'
 import ConfirmDialog from '~/components/ConfirmDialog.vue'
 import * as commonTypes from '~/types/common'
-import { addRecipeData } from '~/utils/firestore'
+import { addRecipeData, getAllRecipeData } from '~/utils/firestore'
+import firebase from '~/plugins/firebase'
 
 extend('required', {
     ...required,
@@ -90,6 +92,7 @@ export default Vue.extend({
             currentStep: 1,
             isLoading: false,
             picFile:null,
+            picId: '',
             isUploaded:true,
             recipe: {
                 name: '',
@@ -150,11 +153,32 @@ export default Vue.extend({
 
         },
 
-        save (){
-            console.log("saveしようとしています")
-            addRecipeData(this.$store.getters.getUser,this.recipe)
-            console.log("saveされた")
-            this.dialog  = true
+        async save (){
+            if(this.picFile){
+                try{
+                    console.log("saveしようとしています")
+                    await addRecipeData(this.$store.getters.getUser,this.recipe)
+                    console.log("saveされた")
+                    const res = await getAllRecipeData()
+                    for (const tmp of res) {
+                        if(this.recipe.name =tmp.recipe.name){
+                            this.picId = tmp.Id
+                        }
+                    }
+                } catch(e){
+                    console.error("carcherror : "+e.code)
+                }
+                try{
+                    const storage = firebase.storage()
+                    const storageRef =  await storage.ref('Recipes')
+                    await storageRef.child(`${this.picId}.jpg`).put(this.picFile)
+                    this.dialog  = true
+                }catch(e){
+                    console.error("carcherror : "+e.code)
+                }
+            } else {
+                alert('画像をアップロードしてください。。')
+            }
         },
 
         toHome(){

@@ -24,3 +24,13 @@ export const addRecipeData = (user: commonTypes.User, recipe: commonTypes.recipe
     ref.add(Object.assign({userName:user.userName},recipe,common))
     console.log("firestoreにrecipedataを格納しました")
 }
+
+export const getAllRecipeData = () =>{
+    console.log("データをゲットしようとしています")
+    const ref =db.collection('Recipes')
+    ref.get().then((res)=>{
+        return res.docs.map(
+            doc => Object.assign(doc.data(), { id: doc.id })
+          )
+    })
+}
