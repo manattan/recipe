@@ -21,4 +21,6 @@ export const addUserData = (user: commonTypes.User)  => {
 export const addRecipeData = (user: commonTypes.User, recipe: commonTypes.recipe) => {
     console.log("firestoreにrecipeを格納しようとしています")
     const ref= db.collection('Recipes')
+    ref.add(Object.assign({userName:user.userName},recipe,common))
+    console.log("firestoreにrecipedataを格納しました")
 }

@@ -36,7 +36,7 @@
                         </v-stepper-content>
                         <v-stepper-content step="3">
                             <div v-for="(instruction, k) in recipe.instructions" :key="k">
-                                <text-input-with-validate v-model="instruction.value" label="調理法" rules="required"/>
+                                <text-input-with-validate v-model="instruction.k" label="調理法" rules="required"/>
                             </div>                            
                         </v-stepper-content>
                         <v-stepper-content step="4">
@@ -66,6 +66,7 @@ import TextInputWithValidate from '~/components/TextInputWithValidate.vue'
 import Confirm from '~/components/Confirm.vue'
 import ConfirmDialog from '~/components/ConfirmDialog.vue'
 import * as commonTypes from '~/types/common'
+import { addRecipeData } from '~/utils/firestore'
 
 extend('required', {
     ...required,
@@ -91,12 +92,11 @@ export default Vue.extend({
                 name: '',
                 summary: '',
                 ingredients: [{title:'',item:['']}],
-                instructions: [{value:''}],
+                instructions: [{value:""}],
                 timeInfo: ['','','','']
             }
         }
     },
-
     methods: {
         goForward (){
             this.currentStep +=1
@@ -143,7 +143,7 @@ export default Vue.extend({
 
         save (){
             console.log("saveしようとしています")
-            // firebaseの処理
+            addRecipeData(this.$store.getters.getUser,this.recipe)
             console.log("saveされた")
             this.dialog  = true
         },

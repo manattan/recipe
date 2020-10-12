@@ -22,7 +22,7 @@ export default Vue.extend({
     props: {
         value:{
             type: String,
-            required:true
+            required:false
         },
         label: {
             type: String,

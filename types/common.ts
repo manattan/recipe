@@ -13,10 +13,14 @@ export type Ingredients = {
     item: string[]
 }
 
+export type instruction = {
+    value:string
+}
+
 export type recipe = {
     name: string,
     summary: string,
     ingredients:Ingredients[],
-    instructions: string[],
+    instructions: instruction[],
     timeInfo: string[]
 }
