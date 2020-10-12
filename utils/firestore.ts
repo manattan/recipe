@@ -25,12 +25,11 @@ export const addRecipeData = (user: commonTypes.User, recipe: commonTypes.recipe
     console.log("firestoreにrecipedataを格納しました")
 }
 
-export const getAllRecipeData = () =>{
+export const getAllRecipeData = async () =>{
     console.log("データをゲットしようとしています")
     const ref =db.collection('Recipes')
-    ref.get().then((res)=>{
-        return res.docs.map(
-            doc => Object.assign(doc.data(), { id: doc.id })
-          )
-    })
+    const qs = await ref.get()
+    return qs.docs.map(
+      doc => Object.assign(doc.data(), { id: doc.id })
+    )
 }
