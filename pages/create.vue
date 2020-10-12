@@ -78,7 +78,8 @@ export default Vue.extend({
     components: {
         ValidationObserver,
         TextInputWithValidate,
-        Confirm
+        Confirm,
+        ConfirmDialog
     },
 
     data () {

@@ -1,6 +1,6 @@
 <template>
-    <v-dialog :value="dialog">
-        <v-card class="card">
+    <v-dialog :value="dialog" max-width="600px">
+        <v-card>
             <v-card-title class="headline">レシピが正常に追加されました.</v-card-title>
             <v-btn @click="toHome">ホームに戻る</v-btn>
             <v-btn @click="toMypage">マイページに進む</v-btn>
@@ -29,10 +29,3 @@ export default Vue.extend({
     }
 })
 </script>
-
-<style scoped>
-.card{
-    max-width:500px;
-    margin:0 auto;
-}
-</style>
