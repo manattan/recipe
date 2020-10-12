@@ -1,5 +1,6 @@
 <template>
     <v-container>
+        <span>Todo: スタイル変更する</span>
         <v-row><h1>name: {{name}}</h1></v-row>
         <v-row><h1>summary: {{summary}}</h1></v-row>
         <v-row v-for="(ingredient,i) in ingredients" :key="i">
