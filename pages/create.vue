@@ -18,11 +18,11 @@
                             要する時間の追加
                         </v-stepper-step>
                         <v-stepper-step :complete="currentStep > 5" step="5">
-                            確認
+                            動画のアップロード
                         </v-stepper-step>
                     </v-stepper-header>
                     <v-stepper-items>
-                        <v-stepper-content step="1">
+                        <v-stepper-content step="1" ref="summary">
                             <text-input-with-validate v-model="recipe.name" label="レシピ名" rules="required"/>
                             <text-input-with-validate v-model="recipe.summary" label="summary" rules="required"/>
                         </v-stepper-content>
@@ -46,7 +46,8 @@
                             <text-input-with-validate v-model="recipe.timeInfo[3]" label="総時間" rules="required"/>
                             </v-stepper-content>
                         <v-stepper-content step="5">
-                            <Confirm :recipe="recipe"/>
+                            <span>写真をアップロードしてください.</span>
+                            <v-file-input v-model="picFile" accept="image/*" label="写真をアップロードしてください" prepend-icon="mdi-picture" />
                         </v-stepper-content>
                     </v-stepper-items>
                     <stepper-controller :current-step="currentStep" class="mt-16" @clickForwardButton="clickForwardButton" @clickBackButton="clickBackButton" :disabled="inValid"/>
@@ -63,7 +64,7 @@ import Vue from 'vue'
 import { extend, ValidationObserver } from 'vee-validate'
 import { is, required } from 'vee-validate/dist/rules'
 import TextInputWithValidate from '~/components/TextInputWithValidate.vue'
-import Confirm from '~/components/Confirm.vue'
+// import Confirm from '~/components/Confirm.vue'
 import ConfirmDialog from '~/components/ConfirmDialog.vue'
 import * as commonTypes from '~/types/common'
 import { addRecipeData } from '~/utils/firestore'
@@ -79,7 +80,7 @@ export default Vue.extend({
     components: {
         ValidationObserver,
         TextInputWithValidate,
-        Confirm,
+        // Confirm,
         ConfirmDialog
     },
 
@@ -88,6 +89,8 @@ export default Vue.extend({
             dialog: false,
             currentStep: 1,
             isLoading: false,
+            picFile:null,
+            isUploaded:true,
             recipe: {
                 name: '',
                 summary: '',
@@ -125,20 +128,26 @@ export default Vue.extend({
                         this.goForward()
                         break
                     case 5:
-                        const obse:any = this.$refs.observer
-                        const isValid = await obse.validate()
-                        if(isValid){
-                            this.save()
-                        } else {
-                            alert('空欄がありますね')
+                        if(confirm("この内容でアップロードしますか?")){
+                            const obse:any = this.$refs.observer
+                            const isValid = await obse.validate()
+                            if(isValid){
+                                this.save()
+                            } else {
+                                alert('空欄がありますね')
+                            }
+                            break
                         }
-                        break
                 }
                 this.isLoading = false
         },
 
         clickBackButton () {
             this.goBack()
+        },
+
+        upload(file:any){
+
         },
 
         save (){
