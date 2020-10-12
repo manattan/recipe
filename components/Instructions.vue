@@ -6,7 +6,7 @@
                 <p>{{i + 1}}</p>
             </div>
             <div>
-                <p>  {{item}}</p>
+                <p>  {{item.value}}</p>
             </div>
         </div>
     </v-container>
