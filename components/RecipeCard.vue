@@ -13,7 +13,7 @@
     </v-card>
 </template>
 
-<script lang="ts">
+<script>
 import Vue,{PropType} from 'vue'
 import * as commonTypes from '~/types/common'
 import {timestampToDate}from '~/utils/firestore.ts'
