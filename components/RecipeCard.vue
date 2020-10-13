@@ -1,6 +1,8 @@
 <template>
     <section>
-        <v-img :src="url" />
+        <v-card max-width="300" class="card">
+            <v-img :src="url" />
+        </v-card>
     </section>
 </template>
 
@@ -38,3 +40,9 @@ export default Vue.extend({
     }
 })
 </script>
+
+<style scoped>
+.card{
+    border-radius: 20px;
+}
+</style>

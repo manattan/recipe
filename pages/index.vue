@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-row>
-            <v-col v-for="(recipe,i) in allRecipe" :key="i">
+            <v-col v-for="(recipe,i) in allRecipe" :key="i" md="4">
                 <RecipeCard
                     :url="recipe.url"
                     :title="recipe.name"

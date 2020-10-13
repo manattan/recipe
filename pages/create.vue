@@ -160,9 +160,11 @@ export default Vue.extend({
                     await addRecipeData(this.$store.getters.getUser,this.recipe)
                     console.log("saveされた")
                     const res = await getAllRecipeData()
+                    console.log(res)
                     for (const tmp of res) {
-                        if(this.recipe.name =tmp.recipe.name){
-                            this.picId = tmp.Id
+                        if(this.recipe.name ===tmp.name){
+                            this.picId = tmp.id
+                            console.log(this.picId)
                         }
                     }
                 } catch(e){
