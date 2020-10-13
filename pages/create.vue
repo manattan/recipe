@@ -135,7 +135,7 @@ export default Vue.extend({
                             const obse:any = this.$refs.observer
                             const isValid = await obse.validate()
                             if(isValid){
-                                this.save()
+                                this.save(this.picFile)
                             } else {
                                 alert('空欄がありますね')
                             }
@@ -153,8 +153,8 @@ export default Vue.extend({
 
         },
 
-        async save (){
-            if(this.picFile){
+        async save (file: any){
+            if(file){
                 try{
                     console.log("saveしようとしています")
                     await addRecipeData(this.$store.getters.getUser,this.recipe)
@@ -171,7 +171,7 @@ export default Vue.extend({
                 try{
                     const storage = firebase.storage()
                     const storageRef =  await storage.ref('Recipes')
-                    await storageRef.child(`${this.picId}.jpg`).put(this.picFile)
+                    await storageRef.child(`${this.picId}.jpg`).put(file)
                     this.dialog  = true
                 }catch(e){
                     console.error("carcherror : "+e.code)
