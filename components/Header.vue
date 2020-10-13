@@ -9,7 +9,7 @@
         <v-btn icon>
             <v-icon>mdi-heart</v-icon>
         </v-btn>
-        <button v-if="url!='/create'" class="toCreate" @click="toCreate">
+        <button v-if="url!='/create' && this.$store.state.user.userUid" class="toCreate" @click="toCreate">
             <v-toolbar-title>レシピを追加</v-toolbar-title>
         </button>
         <v-toolbar-title v-if="this.$store.state.user.userUid">Hello, {{user.userName}}</v-toolbar-title>

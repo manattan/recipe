@@ -1,5 +1,6 @@
 import firebase from '~/plugins/firebase'
 import 'firebase/firestore'
+import { firestore } from 'firebase/app'
 import * as commonTypes from '~/types/common'
 
 const db = firebase.firestore()
@@ -8,6 +9,10 @@ const common: commonTypes.CommonDocumentData = {
     addTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
     updateTimestamp: firebase.firestore.FieldValue.serverTimestamp()
 }
+
+export const timestampToDate = (timestampObj: firestore.Timestamp): Date => {
+    return timestampObj.toDate()
+  }
 
 export const addUserData = (user: commonTypes.User)  => {
     console.log("firestoreにuserを格納しようとしています")
